@@ -1,3 +1,7 @@
+output "data_share_accounts_id" {
+  description = "Map of id values across all data_share_accounts, keyed the same as var.data_share_accounts"
+  value       = { for k, v in azurerm_data_share_account.data_share_accounts : k => v.id }
+}
 output "data_share_accounts_identity" {
   description = "Map of identity values across all data_share_accounts, keyed the same as var.data_share_accounts"
   value       = { for k, v in azurerm_data_share_account.data_share_accounts : k => v.identity }
