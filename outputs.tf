@@ -4,7 +4,7 @@ output "data_share_accounts_id" {
 }
 output "data_share_accounts_identity" {
   description = "Map of identity values across all data_share_accounts, keyed the same as var.data_share_accounts"
-  value       = { for k, v in azurerm_data_share_account.data_share_accounts : k => v.identity if v.identity != null && length(v.identity) > 0 }
+  value       = { for k, v in azurerm_data_share_account.data_share_accounts : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
 }
 output "data_share_accounts_location" {
   description = "Map of location values across all data_share_accounts, keyed the same as var.data_share_accounts"
